@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poem Generator</title>
+    <link rel="stylesheet" href="POEM1.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Poem Generator</h1>
+        <button id="generate-btn">Generate Poem</button>
+        <div id="poem-container"></div>
+    </div>
+
+    <script>
+        const nouns = ["dream", "moon", "star", "river", "sky"];
+        const verbs = ["shine", "dance", "whisper", "flow", "glow"];
+        const adjectives = ["silent", "gentle", "bright", "soft", "mystic"];
+
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function generatePoem() {
+            let poem = '';
+            for (let i = 0; i < 4; i++) {
+                const line = `The ${getRandomElement(adjectives)} ${getRandomElement(nouns)} ${getRandomElement(verbs)} in the ${getRandomElement(nouns)}.`;
+                poem += line + '\n';
+            }
+            return poem;
+        }
+
+        document.getElementById('generate-btn').addEventListener('click', () => {
+            const poem = generatePoem();
+            document.getElementById('poem-container').innerHTML = `<pre>${poem}</pre>`;
+        });
+    </script>
+</body>
+</html>
